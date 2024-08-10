@@ -4,5 +4,5 @@ project(Utility)
 set(CMAKE_CXX_STANDARD 26)
 
 add_library(Utility STATIC
-        Utility.cpp
-        Utility.h)
+        src/Utility.cpp
+        src/include/Utility.h)

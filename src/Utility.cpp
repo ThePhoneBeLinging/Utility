@@ -2,7 +2,7 @@
 // Created by Elias Aggergaard Larsen on 10/08/2024.
 //
 
-#include "Utility.h"
+#include "include/Utility.h"
 
 #include <cstdlib>
 #include <ctime>
@@ -11,6 +11,7 @@
 bool Utility::mRandInitialised = false;
 int Utility::getRandomInt(int min, int max)
 {
+    max++;
     if (!mRandInitialised)
     {
         srand(time(nullptr));
