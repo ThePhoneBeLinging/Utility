@@ -9,7 +9,7 @@
 
 
 bool Utility::mRandInitialised = false;
-int Utility::getRandomFloat(int min, int max)
+int Utility::getRandomInt(int min, int max)
 {
     if (!mRandInitialised)
     {

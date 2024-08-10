@@ -9,7 +9,7 @@
 
 class Utility {
 public:
-    static int getRandomFloat(int min, int max);
+    static int getRandomInt(int min, int max);
 private:
     static bool mRandInitialised;
 };
