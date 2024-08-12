@@ -15,10 +15,9 @@ int Timer::milliSecondsLeft()
 {
     auto end = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> timeElapsed = end - mStartTime;
-    int timeLeft = timeElapsed.count() * 1000;
-    timeLeft -= mTotalTime;
-    if (timeLeft < 0) return 0;
-    return timeLeft;
+    int elapsedTime = timeElapsed.count() * 1000;
+    if (elapsedTime >= mTotalTime) return 0;
+    return mTotalTime - elapsedTime;
 }
 
 void Timer::start()
