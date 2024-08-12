@@ -2,7 +2,7 @@
 // Created by Elias Aggergaard Larsen on 10/08/2024.
 //
 
-#include "include/Utility.h"
+#include "include/Utility/Utility.h"
 
 #include <cstdlib>
 #include <ctime>

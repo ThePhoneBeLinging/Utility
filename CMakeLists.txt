@@ -6,10 +6,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED true)
 
 add_library(Utility STATIC
         src/Utility.cpp
-        src/include/Utility.h
-        #src/Timer.cpp
-        #src/Timer.h
+        src/include/Utility/Utility.h
+        src/Timer.cpp
+        src/include/Utility/Timer.h
 )
 
 target_include_directories(Utility PUBLIC src/include)
-target_include_directories(Utility PUBLIC src)
