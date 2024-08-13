@@ -13,7 +13,7 @@ Timer::Timer(int timeInMilli) : mTotalTime(timeInMilli)
 
 int Timer::milliSecondsLeft()
 {
-    auto end = std::chrono::high_resolution_clock::now();
+    std::chrono::time_point<std::chrono::high_resolution_clock> end = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> timeElapsed = end - mStartTime;
     int elapsedTime = timeElapsed.count() * 1000;
     if (elapsedTime >= mTotalTime) return 0;

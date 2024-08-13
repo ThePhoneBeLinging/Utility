@@ -14,7 +14,7 @@ public:
     void reset();
 private:
     int mTotalTime;
-    std::chrono::time_point<std::chrono::steady_clock> mStartTime;
+    std::chrono::time_point<std::chrono::high_resolution_clock> mStartTime;
 };
 
 
