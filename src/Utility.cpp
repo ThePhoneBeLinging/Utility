@@ -35,16 +35,14 @@ void Utility::writeToFile(const std::string& fileName, const std::string& msg)
 
 std::string Utility::readFromFile(std::string fileName)
 {
-    // Create a text string, which is used to output the text file
     std::string myText;
-
-    // Read from the text file
-    std::ifstream MyReadFile(fileName);
-    std::string returnString;
-    // Use a while loop together with the getline() function to read the file line by line
-    while (getline (MyReadFile, myText)) {
-        returnString.append(myText);
+    std::ifstream file(fileName);
+    std::string str;
+    while (std::getline(file, str))
+    {
+        myText.append(str);
+        myText.append("\n");
     }
-    MyReadFile.close();
-    return returnString;
+    file.close();
+    return myText;
 }
