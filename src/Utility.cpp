@@ -33,6 +33,13 @@ void Utility::writeToFile(const std::string& fileName, const std::string& msg)
     MyFile.close();
 }
 
+void Utility::appendToFile(const std::string& fileName, const std::string& msg)
+{
+    std::ofstream outfile;
+    outfile.open(fileName, std::ios_base::app);
+    outfile << msg;
+}
+
 std::string Utility::readFromFile(std::string fileName)
 {
     std::string myText;
