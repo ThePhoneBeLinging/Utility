@@ -40,7 +40,7 @@ void Utility::appendToFile(const std::string& fileName, const std::string& msg)
     outfile << msg;
 }
 
-std::string Utility::readFromFile(std::string fileName)
+std::string Utility::readFromFile(std::string& fileName)
 {
     std::string myText;
     std::ifstream file(fileName);
