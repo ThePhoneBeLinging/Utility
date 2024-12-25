@@ -12,7 +12,7 @@ public:
     static int getRandomInt(int min, int max);
     static void writeToFile(const std::string& fileName, const std::string& msg);
     static void appendToFile(const std::string& fileName, const std::string& msg);
-    static std::string readFromFile(std::string& fileName);
+    static std::string readFromFile(const std::string& fileName);
 private:
     static bool mRandInitialised;
 };
