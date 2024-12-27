@@ -11,7 +11,7 @@
 class TimeUtil
 {
 public:
-    static std::vector<std::string> getStringsForTmrwAnd7DaysBack();
+    static std::vector<std::string> getStringsForTmrwAnd14DaysBack();
     static std::string getCurrentTimeAsDateString();
     static tm getCurrentTime();
     static tm getTommorowTime();
