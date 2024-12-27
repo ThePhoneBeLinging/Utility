@@ -9,6 +9,8 @@ add_library(Utility STATIC
         src/include/Utility/Utility.h
         src/Timer.cpp
         src/include/Utility/Timer.h
+        src/TimeUtil.cpp
+        src/include/Utility/TimeUtil.h
 )
 
 target_include_directories(Utility PUBLIC src/include)
