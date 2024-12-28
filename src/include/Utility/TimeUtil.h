@@ -17,8 +17,9 @@ public:
     static tm getTommorowTime();
     static std::string timeToStringForAPI(const tm& time);
     static std::string timeToStringForLookup(const tm& time);
-private:
     static tm timeToTM(std::chrono::time_point<std::chrono::system_clock> time);
+
+private:
 };
 
 
