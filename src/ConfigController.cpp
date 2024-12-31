@@ -17,16 +17,33 @@ void ConfigController::loadConfig(std::string fileName)
 
     for (const auto& item : jsonObject.items())
     {
-        configLookupTable_[item.key()] = item.value();
+        if (item.value().is_string())
+        {
+            configStringLookupTable_[item.key()] = item.value();
+        }
+        else if (item.value().is_number_integer())
+        {
+            configIntLookupTable_[item.key()] = item.value();
+        }
     }
 }
 
-std::string ConfigController::getConfig(const std::string& key)
+int ConfigController::getConfigInt(const std::string& key)
 {
     std::lock_guard lock(mutex_);
-    if (not configLookupTable_.contains(key))
+    if (not configIntLookupTable_.contains(key))
     {
-        throw std::invalid_argument("Key not found");
+        throw std::runtime_error("ConfigController::getConfigInt: Key " + key + " not found");
     }
-    return configLookupTable_[key];
+    return configIntLookupTable_[key];
+}
+
+std::string ConfigController::getConfigString(const std::string& key)
+{
+    std::lock_guard lock(mutex_);
+    if (not configIntLookupTable_.contains(key))
+    {
+        throw std::runtime_error("ConfigController::getConfigInt: Key " + key + " not found");
+    }
+    return configStringLookupTable_[key];
 }

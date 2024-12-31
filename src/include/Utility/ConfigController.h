@@ -13,9 +13,11 @@ class ConfigController
 {
 public:
     static void loadConfig(std::string fileName);
-    static std::string getConfig(const std::string& key);
+    static std::string getConfigString(const std::string& key);
+    static int getConfigInt(const std::string& key);
 private:
-    static inline std::unordered_map<std::string,std::string> configLookupTable_;
+    static inline std::unordered_map<std::string,std::string> configStringLookupTable_;
+    static inline std::unordered_map<std::string,int> configIntLookupTable_;
     static inline std::mutex mutex_;
 };
 
