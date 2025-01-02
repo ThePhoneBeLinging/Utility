@@ -46,13 +46,18 @@ tm TimeUtil::getTommorowTime()
 
 std::string TimeUtil::timeToStringForAPI(const tm& time)
 {
-    std::string timeString = std::to_string(time.tm_year) + "-" + std::to_string(time.tm_mon) + "-" + std::to_string(time.tm_mday);
+
+    std::string timeString = std::to_string(time.tm_year);
+    timeString += "-" + (time.tm_mon < 10 ? "0" + std::to_string(time.tm_mon) : std::to_string(time.tm_mon));
+    timeString += "-" + (time.tm_mday < 10 ? "0" + std::to_string(time.tm_mday) : std::to_string(time.tm_mday));
     return timeString;
 }
 
 std::string TimeUtil::timeToStringForLookup(const tm& time)
 {
-    std::string timeString = std::to_string(time.tm_mday) + "." + std::to_string(time.tm_mon) + "." + std::to_string(time.tm_year);
+    std::string timeString = (time.tm_mday < 10 ? "0" + std::to_string(time.tm_mday) : std::to_string(time.tm_mday));
+    timeString += "." + (time.tm_mon < 10 ? "0" + std::to_string(time.tm_mon) : std::to_string(time.tm_mon));
+    timeString += "." + std::to_string(time.tm_year);
     return timeString;
 }
 
