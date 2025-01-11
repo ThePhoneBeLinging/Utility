@@ -47,3 +47,20 @@ std::string ConfigController::getConfigString(const std::string& key)
     }
     return configStringLookupTable_[key];
 }
+
+std::vector<std::pair<std::string, std::string>> ConfigController::getConfigList()
+{
+    std::lock_guard lock(mutex_);
+    std::vector<std::pair<std::string, std::string>> configList;
+    for (const auto& item : configIntLookupTable_)
+    {
+        auto pair = std::make_pair(item.first, std::to_string(item.second));
+        configList.push_back(pair);
+    }
+    for (const auto& item : configStringLookupTable_)
+    {
+        auto pair = std::make_pair(item.first, item.second);
+        configList.push_back(pair);
+    }
+    return configList;
+}

@@ -7,6 +7,7 @@
 #include <mutex>
 #include <string>
 #include <unordered_map>
+#include <vector>
 
 
 class ConfigController
@@ -15,6 +16,7 @@ public:
     static void loadConfig(std::string fileName);
     static std::string getConfigString(const std::string& key);
     static int getConfigInt(const std::string& key);
+    static std::vector<std::pair<std::string, std::string>> getConfigList();
 private:
     static inline std::unordered_map<std::string,std::string> configStringLookupTable_;
     static inline std::unordered_map<std::string,int> configIntLookupTable_;
