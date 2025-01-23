@@ -71,7 +71,7 @@ int TimeUtil::secondsToNextHour()
     auto currentTime = getCurrentTime();
 
     auto seconds = 60 - currentTime.tm_sec;
-    auto minutes = currentTime.tm_min - 1;
+    auto minutes = 60 -currentTime.tm_min - 1;
 
     int secondsRemaining = minutes * 60 + seconds;
     return secondsRemaining;
