@@ -19,6 +19,7 @@ public:
     static std::string timeToStringForLookup(const tm& time);
     static tm timeToTM(std::chrono::time_point<std::chrono::system_clock> time);
     static int secondsToNextHour();
+    static std::string intToWeekDayDanish(int indexOfWeekDay);
 
 private:
 };
