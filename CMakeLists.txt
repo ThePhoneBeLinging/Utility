@@ -17,6 +17,7 @@ add_library(Utility STATIC
         src/include/Utility/TimeUtil.h
         src/ConfigController.cpp
         src/include/Utility/ConfigController.h
+        src/include/Utility/ObservableValue.h
 )
 
 target_include_directories(Utility PUBLIC src/include)
