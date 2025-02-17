@@ -5,6 +5,7 @@
 #ifndef OBSERVABLEVALUE_H
 #define OBSERVABLEVALUE_H
 #include <functional>
+#include <mutex>
 #include <vector>
 
 
@@ -19,11 +20,13 @@ public:
 
     T getValue()
     {
+        std::lock_guard<std::mutex> lock(mutex_);
         return value;
     }
 
     void setValue(T value)
     {
+        std::lock_guard<std::mutex> lock(mutex_);
         this->value = value;
         for (const auto& fun : callbacks_)
         {
@@ -33,15 +36,18 @@ public:
 
     void subscribe(std::function<void(T)> callback)
     {
+        std::lock_guard<std::mutex> lock(mutex_);
         callbacks_.push_back(callback);
     }
 
     void unsubscribe(std::function<void(T)> callback)
     {
+        std::lock_guard<std::mutex> lock(mutex_);
         callbacks_.erase(std::remove(callbacks_.begin(), callbacks_.end(), callback));
     }
 
 private:
+    std::mutex mutex_;
     std::vector<std::function<void(T t)>> callbacks_;
     T value;
 };
