@@ -64,3 +64,13 @@ std::vector<std::pair<std::string, std::string>> ConfigController::getConfigList
     }
     return configList;
 }
+
+void ConfigController::TESTsetConfigInt(const std::string& key, int value)
+{
+    configIntLookupTable_[key] = value;
+}
+
+void ConfigController::TESTsetConfigString(const std::string& key, const std::string& value)
+{
+    configStringLookupTable_[key] = value;
+}

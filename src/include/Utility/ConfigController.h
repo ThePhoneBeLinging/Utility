@@ -17,6 +17,8 @@ public:
     static std::string getConfigString(const std::string& key);
     static int getConfigInt(const std::string& key);
     static std::vector<std::pair<std::string, std::string>> getConfigList();
+    static void TESTsetConfigInt(const std::string& key, int value);
+    static void TESTsetConfigString(const std::string& key, const std::string& value);
 private:
     static inline std::unordered_map<std::string,std::string> configStringLookupTable_;
     static inline std::unordered_map<std::string,int> configIntLookupTable_;
