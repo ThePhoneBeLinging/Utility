@@ -43,7 +43,7 @@ std::string ConfigController::getConfigString(const std::string& key)
     std::lock_guard lock(mutex_);
     if (not configIntLookupTable_.contains(key))
     {
-        throw std::runtime_error("ConfigController::getConfigInt: Key " + key + " not found");
+        throw std::runtime_error("ConfigController::getConfigString: Key " + key + " not found");
     }
     return configStringLookupTable_[key];
 }
