@@ -67,10 +67,12 @@ std::vector<std::pair<std::string, std::string>> ConfigController::getConfigList
 
 void ConfigController::TESTsetConfigInt(const std::string& key, int value)
 {
+    std::lock_guard lock(mutex_);
     configIntLookupTable_[key] = value;
 }
 
 void ConfigController::TESTsetConfigString(const std::string& key, const std::string& value)
 {
+    std::lock_guard lock(mutex_);
     configStringLookupTable_[key] = value;
 }
