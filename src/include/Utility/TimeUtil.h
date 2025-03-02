@@ -6,6 +6,7 @@
 #define TIMEUTIL_H
 #include <chrono>
 #include <ctime>
+#include <string>
 #include <vector>
 
 class TimeUtil
