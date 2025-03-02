@@ -2,12 +2,12 @@
 // Created by eal on 3/2/25.
 //
 
-#include "DebugController.h"
+#include "include/Utility/DebugController.h"
 
 #include <iostream>
 
-#include "Utility/ConfigController.h"
-#include "Utility/Utility.h"
+#include "include/Utility/ConfigController.h"
+#include "include/Utility/Utility.h"
 
 void DebugController::initDebug(const int limit)
 {
