@@ -18,6 +18,8 @@ add_library(Utility STATIC
         src/ConfigController.cpp
         src/include/Utility/ConfigController.h
         src/include/Utility/ObservableValue.h
+        DebugController.cpp
+        DebugController.h
 )
 
 target_include_directories(Utility PUBLIC src/include)
