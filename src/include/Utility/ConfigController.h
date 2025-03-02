@@ -13,15 +13,17 @@
 class ConfigController
 {
 public:
-    static void loadConfig(std::string fileName);
+    static void loadConfig(const std::string& fileName);
     static std::string getConfigString(const std::string& key);
     static int getConfigInt(const std::string& key);
+    static bool getConfigBool(const std::string& key);
     static std::vector<std::pair<std::string, std::string>> getConfigList();
     static void TESTsetConfigInt(const std::string& key, int value);
     static void TESTsetConfigString(const std::string& key, const std::string& value);
 private:
     static inline std::unordered_map<std::string,std::string> configStringLookupTable_;
     static inline std::unordered_map<std::string,int> configIntLookupTable_;
+    static inline std::unordered_map<std::string,bool> configBoolLookupTable_;
     static inline std::mutex mutex_;
 };
 

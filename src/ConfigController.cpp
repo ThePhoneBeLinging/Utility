@@ -8,7 +8,7 @@
 
 #include "Utility/Utility.h"
 
-void ConfigController::loadConfig(std::string fileName)
+void ConfigController::loadConfig(const std::string& fileName)
 {
     std::lock_guard lock(mutex_);
     std::string fileString = Utility::readFromFile(fileName);
@@ -25,6 +25,10 @@ void ConfigController::loadConfig(std::string fileName)
         {
             configIntLookupTable_[item.key()] = item.value();
         }
+        else if (item.value().is_boolean())
+        {
+            configBoolLookupTable_[item.key()] = item.value();
+        }
     }
 }
 
@@ -36,6 +40,16 @@ int ConfigController::getConfigInt(const std::string& key)
         throw std::runtime_error("ConfigController::getConfigInt: Key " + key + " not found");
     }
     return configIntLookupTable_[key];
+}
+
+bool ConfigController::getConfigBool(const std::string& key)
+{
+    std::lock_guard lock(mutex_);
+    if (not configBoolLookupTable_.contains(key))
+    {
+        throw std::runtime_error("ConfigController::getConfigBool: Key " + key + " not found");
+    }
+    return configBoolLookupTable_[key];
 }
 
 std::string ConfigController::getConfigString(const std::string& key)
