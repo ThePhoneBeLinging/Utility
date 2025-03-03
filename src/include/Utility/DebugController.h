@@ -18,7 +18,7 @@ public:
     static void dumpDebug(const std::string* src);
 private:
     static inline int currentIndexInt_;
-    static std::mutex debugMutex_;
+    static inline std::mutex debugMutex_;
     static inline std::vector<std::string> debugLines_;
     static inline int debugLimit_;
 };
