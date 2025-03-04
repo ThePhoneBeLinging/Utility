@@ -12,6 +12,7 @@
 void DebugController::initDebug(const int limit)
 {
     currentIndexInt_ = 0;
+    debugLimit_ = limit;
     debugLines_.resize(limit);
 }
 
