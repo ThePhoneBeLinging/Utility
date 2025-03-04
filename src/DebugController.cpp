@@ -17,6 +17,10 @@ void DebugController::initDebug(const int limit)
 
 void DebugController::debugWrite(const std::string& debugText)
 {
+    if (debugLines_.empty())
+    {
+        throw std::invalid_argument("DebugController has not been initialised");
+    }
     std::lock_guard<std::mutex> lock(debugMutex_);
     debugLines_[currentIndexInt_] = debugText;
     currentIndexInt_++;
