@@ -23,15 +23,15 @@ void DebugController::debugWrite(const std::string& debugText)
     currentIndexInt_ %= debugLimit_;
 }
 
-void DebugController::dumpDebug(const std::string* src)
+void DebugController::dumpDebug(const std::string& src)
 {
     std::lock_guard<std::mutex> lock(debugMutex_);
     for (const auto& line : debugLines_)
     {
-        if (src != nullptr)
+        if (not src.empty())
         {
-            Utility::appendToFile(*src,line);
-            Utility::appendToFile(*src,"\n");
+            Utility::appendToFile(src,line);
+            Utility::appendToFile(src,"\n");
         }
         else
         {

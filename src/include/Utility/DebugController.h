@@ -15,7 +15,7 @@ public:
     static void initDebug(int limit);
     static void debugWrite(const std::string& debugText);
     // Give src = nullptr for simply printing to console.
-    static void dumpDebug(const std::string* src);
+    static void dumpDebug(const std::string& src);
 private:
     static inline int currentIndexInt_;
     static inline std::mutex debugMutex_;
