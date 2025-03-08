@@ -66,6 +66,15 @@ tm TimeUtil::timeToTM(const std::chrono::time_point<std::chrono::system_clock> t
     return localTM;
 }
 
+int TimeUtil::secondsToNextMinute()
+{
+    auto currentTime = getCurrentTime();
+
+    auto seconds = 60 - currentTime.tm_sec;
+
+    return seconds;
+}
+
 int TimeUtil::secondsToNextHour()
 {
     auto currentTime = getCurrentTime();
