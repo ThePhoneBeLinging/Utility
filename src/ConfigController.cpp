@@ -4,6 +4,7 @@
 
 #include "include/Utility/ConfigController.h"
 
+#include <iostream>
 #include <nlohmann/json.hpp>
 
 #include "Utility/Utility.h"
@@ -19,6 +20,8 @@ void ConfigController::loadConfig(const std::string& fileName)
     {
         if (item.value().is_string())
         {
+            std::cout << "HELO" << std::endl;
+            std::cout << item.key() << std::endl;
             configStringLookupTable_[item.key()] = item.value();
         }
         else if (item.value().is_number_integer())
