@@ -20,8 +20,6 @@ void ConfigController::loadConfig(const std::string& fileName)
     {
         if (item.value().is_string())
         {
-            std::cout << "HELO" << std::endl;
-            std::cout << item.key() << std::endl;
             configStringLookupTable_[item.key()] = item.value();
         }
         else if (item.value().is_number_integer())
@@ -58,7 +56,7 @@ bool ConfigController::getConfigBool(const std::string& key)
 std::string ConfigController::getConfigString(const std::string& key)
 {
     std::lock_guard lock(mutex_);
-    if (not configIntLookupTable_.contains(key))
+    if (not configStringLookupTable_.contains(key))
     {
         throw std::runtime_error("ConfigController::getConfigString: Key " + key + " not found");
     }
