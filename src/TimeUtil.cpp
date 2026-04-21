@@ -8,95 +8,94 @@
 
 std::vector<std::string> TimeUtil::getStringsForTmrwAnd14DaysBack()
 {
-    std::vector<std::string> stringVector;
+  std::vector<std::string> stringVector;
 
-    // Add tmrw:
-    stringVector.push_back(TimeUtil::timeToStringForLookup(TimeUtil::getTommorowTime()));
-    auto now = std::chrono::system_clock::now();
-    for (int i = 0; i < 14; i++)
-    {
-        stringVector.push_back(timeToStringForLookup(timeToTM(now)));
-        now -= std::chrono::hours(24);
-    }
-    return stringVector;
+  // Add tmrw:
+  stringVector.push_back(TimeUtil::timeToStringForLookup(TimeUtil::getTommorowTime()));
+  auto now = std::chrono::system_clock::now();
+  for (int i = 0; i < 14; i++)
+  {
+    stringVector.push_back(timeToStringForLookup(timeToTM(now)));
+    now -= std::chrono::hours(24);
+  }
+  return stringVector;
 }
 
 std::string TimeUtil::getCurrentTimeAsDateString()
 {
-    auto now = getCurrentTime();
-    return timeToStringForLookup(now);
+  auto now = getCurrentTime();
+  return timeToStringForLookup(now);
 }
 
 tm TimeUtil::getCurrentTime()
 {
-    auto now = std::chrono::system_clock::now();
-    return timeToTM(now);
+  auto now = std::chrono::system_clock::now();
+  return timeToTM(now);
 }
 
 tm TimeUtil::getTommorowTime()
 {
-    auto now = std::chrono::system_clock::now();
-    now += std::chrono::hours(24);
-    return timeToTM(now);
+  auto now = std::chrono::system_clock::now();
+  now += std::chrono::hours(24);
+  return timeToTM(now);
 }
 
 std::string TimeUtil::timeToStringForAPI(const tm& time)
 {
-
-    std::string timeString = std::to_string(time.tm_year);
-    timeString += "-" + (time.tm_mon < 10 ? "0" + std::to_string(time.tm_mon) : std::to_string(time.tm_mon));
-    timeString += "-" + (time.tm_mday < 10 ? "0" + std::to_string(time.tm_mday) : std::to_string(time.tm_mday));
-    return timeString;
+  std::string timeString = std::to_string(time.tm_year);
+  timeString += "-" + (time.tm_mon < 10 ? "0" + std::to_string(time.tm_mon) : std::to_string(time.tm_mon));
+  timeString += "-" + (time.tm_mday < 10 ? "0" + std::to_string(time.tm_mday) : std::to_string(time.tm_mday));
+  return timeString;
 }
 
 std::string TimeUtil::timeToStringForLookup(const tm& time)
 {
-    std::string timeString = (time.tm_mday < 10 ? "0" + std::to_string(time.tm_mday) : std::to_string(time.tm_mday));
-    timeString += "." + (time.tm_mon < 10 ? "0" + std::to_string(time.tm_mon) : std::to_string(time.tm_mon));
-    timeString += "." + std::to_string(time.tm_year);
-    return timeString;
+  std::string timeString = (time.tm_mday < 10 ? "0" + std::to_string(time.tm_mday) : std::to_string(time.tm_mday));
+  timeString += "." + (time.tm_mon < 10 ? "0" + std::to_string(time.tm_mon) : std::to_string(time.tm_mon));
+  timeString += "." + std::to_string(time.tm_year);
+  return timeString;
 }
 
 tm TimeUtil::timeToTM(const std::chrono::time_point<std::chrono::system_clock> time)
 {
-    time_t tt = std::chrono::system_clock::to_time_t(time);
-    auto localTM =  *localtime(&tt);
-    localTM.tm_year += 1900;
-    localTM.tm_mon++;
-    return localTM;
+  time_t tt = std::chrono::system_clock::to_time_t(time);
+  auto localTM = *localtime(&tt);
+  localTM.tm_year += 1900;
+  localTM.tm_mon++;
+  return localTM;
 }
 
 int TimeUtil::secondsToNextMinute()
 {
-    auto currentTime = getCurrentTime();
+  auto currentTime = getCurrentTime();
 
-    auto seconds = 60 - currentTime.tm_sec;
+  auto seconds = 60 - currentTime.tm_sec;
 
-    return seconds;
+  return seconds;
 }
 
 int TimeUtil::secondsToNextHour()
 {
-    auto currentTime = getCurrentTime();
+  auto currentTime = getCurrentTime();
 
-    auto seconds = 60 - currentTime.tm_sec;
-    auto minutes = 60 -currentTime.tm_min - 1;
+  auto seconds = 60 - currentTime.tm_sec;
+  auto minutes = 60 - currentTime.tm_min - 1;
 
-    int secondsRemaining = minutes * 60 + seconds;
-    return secondsRemaining;
+  int secondsRemaining = minutes * 60 + seconds;
+  return secondsRemaining;
 }
 
 std::string TimeUtil::intToWeekDayDanish(int indexOfWeekDay)
 {
-    switch (indexOfWeekDay)
-    {
-    case 0: return "Søndag";
-    case 1: return "Mandag";
-    case 2: return "Tirsdag";
-    case 3: return "Onsdag";
-    case 4: return "Torsdag";
-    case 5: return "Fredag";
-    case 6: return "Lørdag";
+  switch (indexOfWeekDay)
+  {
+    case 0: return "SØN";
+    case 1: return "MAN";
+    case 2: return "TIR";
+    case 3: return "ONS";
+    case 4: return "TOR";
+    case 5: return "FRE";
+    case 6: return "LØR";
     default: return "ERROR IN DAY \"ENUM\"";
-    }
+  }
 }
